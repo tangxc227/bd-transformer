@@ -14,4 +14,10 @@ public interface GlobalConstants {
 
     String RUNNING_DATE_PARAMES = "RUNNING_DATE";
 
+    String DEFAULT_VALUE = "unknown";
+
+    String VALUE_OF_ALL = "all";
+
+    Long DAY_OF_MILLISECONDS = 86400000L;
+
 }

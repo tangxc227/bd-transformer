@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bd.transformer.mapper.BrowserDimensionMapper">
+
+    <resultMap type="com.bd.transformer.domain.dim.base.BrowserDimension" id="baseResultMap">
+        <id column="id" property="id"/>
+        <result column="browser_name" property="browserName"/>
+        <result column="browser_version" property="browserVersion"/>
+        <result column="created_time" property="createdTime" />
+    </resultMap>
+
+    <select id="getBrowserDimensionIdByValue" resultMap="baseResultMap" parameterType="com.bd.transformer.domain.dim.base.BrowserDimension">
+        SELECT `id` FROM `dimension_browser`
+         WHERE `browser_name` = #{browserName}
+           AND `browser_version` = #{browserVersion}
+    </select>
+
+    <insert id="addBrowserDimension" parameterType="com.bd.transformer.domain.dim.base.BrowserDimension" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `dimension_browser`(`browser_name`, `browser_version`, `created_time`)
+        VALUES(#{browserName}, #{browserVersion}, #{createdTime})
+    </insert>
+</mapper>

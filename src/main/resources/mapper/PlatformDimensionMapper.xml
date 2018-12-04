@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bd.transformer.mapper.PlatformDimensionMapper">
+
+    <resultMap type="com.bd.transformer.domain.dim.base.PlatformDimension" id="baseResultMap">
+        <id column="id" property="id"/>
+        <result column="platform_name" property="platformName"/>
+        <result column="created_time" property="createdTime" />
+    </resultMap>
+
+    <select id="getPlatformDimensionIdByValue" parameterType="com.bd.transformer.domain.dim.base.PlatformDimension" resultMap="baseResultMap">
+        SELECT `id` FROM `dimension_platform` WHERE `platform_name` = #{platformName}
+    </select>
+
+    <insert id="addPlatformDimension" parameterType="com.bd.transformer.domain.dim.base.PlatformDimension" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `dimension_platform`(`platform_name`, `created_time`)
+        VALUES(#{platformName}, #{createdTime})
+    </insert>
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bd.transformer.mapper.LocationDimensionMapper">
+
+    <resultMap type="com.bd.transformer.domain.dim.base.LocationDimension" id="baseResultMap">
+        <id column="id" property="id"/>
+        <result column="country" property="country"/>
+        <result column="province" property="province"/>
+        <result column="created_time" property="createdTime" />
+    </resultMap>
+
+    <select id="getList" resultMap="baseResultMap">
+        SELECT * FROM dimension_location;
+    </select>
+</mapper>

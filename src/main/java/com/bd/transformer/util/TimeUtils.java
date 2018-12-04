@@ -1,5 +1,6 @@
 package com.bd.transformer.util;
 
+import com.bd.transformer.common.DateEnum;
 import org.apache.commons.lang.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -107,6 +108,49 @@ public class TimeUtils {
             }
         }
         return null;
+    }
+
+    /**
+     * 从时间戳中获取需要的时间信息
+     *
+     * @param timestamp
+     * @param type
+     * @return
+     */
+    public static int getDateInfo(long timestamp, DateEnum type) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp);
+        if (DateEnum.YEAR.equals(type)) {
+            return calendar.get(Calendar.YEAR);
+        } else if (DateEnum.SEASON.equals(type)) {
+            int month = calendar.get(Calendar.MONTH) + 1;
+            return month % 3 == 0 ? month / 3 : month / 3 + 1;
+        } else if (DateEnum.MONTH.equals(type)) {
+            return calendar.get(Calendar.MONTH) + 1;
+        } else if (DateEnum.WEEK.equals(type)) {
+            return calendar.get(Calendar.WEEK_OF_YEAR);
+        } else if (DateEnum.DAY.equals(type)) {
+            return calendar.get(Calendar.DAY_OF_MONTH);
+        } else if (DateEnum.HOUR.equals(type)) {
+            return calendar.get(Calendar.HOUR_OF_DAY);
+        }
+        throw new RuntimeException("没有对应的事件类型：" + type);
+    }
+
+    /**
+     * 获取time指定周的第一天的时间戳
+     * @param timestamp
+     * @return
+     */
+    public static long getFirstDayOfWeek(long timestamp) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp);
+        calendar.set(Calendar.DAY_OF_WEEK, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTimeInMillis();
     }
 
 }

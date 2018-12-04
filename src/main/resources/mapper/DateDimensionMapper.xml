@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bd.transformer.mapper.DateDimensionMapper">
+
+    <resultMap type="com.bd.transformer.domain.dim.base.DateDimension" id="baseResultMap">
+        <id column="id" property="id"/>
+        <result column="year" property="year"/>
+        <result column="season" property="season"/>
+        <result column="month" property="month" />
+        <result column="week" property="week" />
+        <result column="day" property="day" />
+        <result column="calendar" property="calendar" />
+        <result column="type" property="type" />
+        <result column="created_time" property="createdTime" />
+    </resultMap>
+
+    <select id="getDateDimensionIdByValue" parameterType="com.bd.transformer.domain.dim.base.DateDimension" resultMap="baseResultMap">
+        SELECT `id` FROM `dimension_date`
+         WHERE `year` = #{year}
+           AND `season` = #{season}
+           AND `month` = #{month}
+           AND `week` = #{week}
+           AND `day` = #{day}
+           AND `calendar` = #{calendar}
+           AND `type` = #{type};
+    </select>
+
+    <insert id="addDateDimension" parameterType="com.bd.transformer.domain.dim.base.DateDimension" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `dimension_date`(`year`, `season`, `month`, `week`, `day`, `calendar`, `type`, `created_time`)
+        VALUES(#{year}, #{season}, #{month}, #{week}, #{day}, #{calendar}, #{type}, #{createdTime});
+    </insert>
+</mapper>

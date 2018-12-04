@@ -42,6 +42,8 @@ public interface EventLogsConstants {
 
     String MEMBER_ID = "u_mid";
 
+    String PLATFORM_NAME = "pl";
+
     String SESSION_ID = "u_sd";
 
     String CLIENT_TIME = "c_time";
