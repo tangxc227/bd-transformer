@@ -22,7 +22,7 @@ public class BrowserDimension extends BaseDimension {
     private int id;
     private String browserName;
     private String browserVersion;
-    private Date createdTime;
+    private Date createdTime = new Date();
 
     public BrowserDimension() {
     }

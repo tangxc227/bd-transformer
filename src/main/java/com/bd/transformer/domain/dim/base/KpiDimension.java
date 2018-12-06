@@ -16,7 +16,7 @@ public class KpiDimension extends BaseDimension {
 
     private int id;
     private String kpiName;
-    private Date createdTime;
+    private Date createdTime = new Date();
 
     public KpiDimension() {
     }

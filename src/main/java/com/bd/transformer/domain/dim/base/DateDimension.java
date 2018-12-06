@@ -26,7 +26,7 @@ public class DateDimension extends BaseDimension {
     private int day;
     private Date calendar = new Date();
     private String type;
-    private Date createdTime;
+    private Date createdTime = new Date();
 
     public DateDimension() {
 

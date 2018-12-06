@@ -17,7 +17,7 @@ public class LocationDimension extends BaseDimension {
     private String country;
     private String province;
     private String city;
-    private Date createdTime;
+    private Date createdTime = new Date();
 
     @Override
     public int compareTo(BaseDimension o) {

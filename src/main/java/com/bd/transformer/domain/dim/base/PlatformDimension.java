@@ -21,7 +21,7 @@ public class PlatformDimension extends BaseDimension {
 
     private int id;
     private String platformName;
-    private Date createdTime;
+    private Date createdTime = new Date();
 
     public PlatformDimension() {
 
